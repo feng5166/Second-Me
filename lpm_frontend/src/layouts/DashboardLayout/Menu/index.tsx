@@ -59,7 +59,7 @@ const Menu = () => {
           if (memories.length < 3) {
             e.preventDefault();
             message.error({
-              content: 'You need to add at least 3 memories before training',
+              content: '训练前需要添加至少 3 条记忆',
               duration: 3
             });
             // Redirect to memories page
@@ -82,7 +82,7 @@ const Menu = () => {
       if (!serviceStarted) {
         e.preventDefault();
         message.info({
-          content: 'Please start your model service first',
+          content: '请先启动模型服务',
           duration: 2
         });
       }
@@ -112,12 +112,12 @@ const Menu = () => {
         // Clear the loadInfo store
         clearLoadInfo();
         useModelConfigStore.getState().deleteModelConfig();
-        message.success(`${loadInfo!.name} and all related data deleted successfully`);
+        message.success(`${loadInfo!.name} 及所有相关数据已成功删除`);
         router.push(ROUTER_PATH.HOME);
       }
     } catch (error) {
       console.error('Error deleting Second Me:', error);
-      message.error('Failed to delete Second Me');
+      message.error('删除分身失败');
     } finally {
       setDeleteConfirmLoading(false);
       setDeleteModalVisible(false);
@@ -266,7 +266,7 @@ const Menu = () => {
                   isSidebarCollapsed ? 'opacity-0' : 'opacity-100'
                 )}
               >
-                Tutorial
+                教程
               </span>
             </button>
 
@@ -277,7 +277,7 @@ const Menu = () => {
               )}
               onClick={() => {
                 if (disabledChangeParams) {
-                  message.warning('Cancel the current train in order to configure the model');
+                  message.warning('取消当前训练以配置模型');
 
                   return;
                 }
@@ -292,7 +292,7 @@ const Menu = () => {
                   isSidebarCollapsed ? 'opacity-0' : 'opacity-100'
                 )}
               >
-                Support Model Config
+                支持模型配置
               </span>
             </button>
 
@@ -307,7 +307,7 @@ const Menu = () => {
                   isSidebarCollapsed ? 'opacity-0' : 'opacity-100'
                 )}
               >
-                Delete Second Me
+                删除分身
               </span>
             </button>
           </div>
@@ -318,7 +318,7 @@ const Menu = () => {
       <Modal
         footer={[
           <Button key="cancel" onClick={() => setDeleteModalVisible(false)}>
-            Cancel
+            取消
           </Button>,
           <Button
             key="delete"
@@ -328,38 +328,32 @@ const Menu = () => {
             onClick={handleConfirmDelete}
             type="primary"
           >
-            Delete
+            删除
           </Button>
         ]}
         onCancel={() => setDeleteModalVisible(false)}
         open={deleteModalVisible}
         title={
           <div className="text-red-600 flex items-center gap-2">
-            <ExclamationCircleOutlined /> Delete {name}
+            <ExclamationCircleOutlined /> 删除 {name}
           </div>
         }
       >
         <div className="space-y-4">
-          <p>
-            This action will permanently delete {name} and all associated data. This action cannot
-            be undone.
-          </p>
+          <p>此操作将永久删除 {name} 及所有相关数据。此操作无法撤销。</p>
           <div className="bg-red-50 p-3 border border-red-200 rounded-md">
             <p className="text-sm text-red-700">
-              To confirm deletion, please type <span className="font-bold">DELETE SECOND ME</span>{' '}
-              in the field below:
+              确认删除，请在下方输入 <span className="font-bold">DELETE SECOND ME</span>：
             </p>
           </div>
           <Input
             onChange={(e) => setDeleteConfirmText(e.target.value)}
-            placeholder="Type DELETE SECOND ME to confirm"
+            placeholder="输入 DELETE SECOND ME 确认"
             status={deleteConfirmText && deleteConfirmText !== 'DELETE SECOND ME' ? 'error' : ''}
             value={deleteConfirmText}
           />
           {deleteConfirmText && deleteConfirmText !== 'DELETE SECOND ME' && (
-            <p className="text-red-500 text-sm">
-              Text does not match. Please type exactly: DELETE SECOND ME
-            </p>
+            <p className="text-red-500 text-sm">文本不匹配。请准确输入：DELETE SECOND ME</p>
           )}
         </div>
       </Modal>

@@ -22,13 +22,13 @@ export default function CreateSecondMe({ onClose }: CreateSecondMeProps) {
 
   const validateName = (value: string) => {
     if (value.length < 2 || value.length > 20) {
-      setNameError('Name must be between 2 and 20 characters');
+      setNameError('名称长度必须在 2 到 20 个字符之间');
 
       return false;
     }
 
     if (value.includes(' ')) {
-      setNameError('Name cannot contain spaces');
+      setNameError('名称不能包含空格');
 
       return false;
     }
@@ -49,7 +49,7 @@ export default function CreateSecondMe({ onClose }: CreateSecondMeProps) {
     const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
 
     if (!emailRegex.test(value)) {
-      setEmailError('Please enter a valid email address');
+      setEmailError('请输入有效的邮箱地址');
 
       return false;
     }
@@ -90,7 +90,7 @@ export default function CreateSecondMe({ onClose }: CreateSecondMeProps) {
             })
           );
 
-          message.success('Identity created successfully');
+          message.success('身份创建成功');
 
           setTimeout(() => {
             router.push(ROUTER_PATH.DASHBOARD);
@@ -114,10 +114,9 @@ export default function CreateSecondMe({ onClose }: CreateSecondMeProps) {
             <div className="absolute -bottom-20 -left-20 w-64 h-64 rounded-full bg-orange-50 opacity-70" />
             <div className="space-y-6 relative z-10">
               <div className="mb-6">
-                <h1 className="text-3xl font-bold mb-3 text-gray-900">Define Your Identity</h1>
+                <h1 className="text-3xl font-bold mb-3 text-gray-900">定义你的身份</h1>
                 <p className="text-lg text-gray-600 leading-relaxed max-w-xl">
-                  This initial identity represents your core self. You can expand upon it further in
-                  the upcoming steps.
+                  这个初始身份代表你的核心自我。你可以在后续步骤中进一步扩展它。
                 </p>
               </div>
               <form className="space-y-6 mt-6" onSubmit={handleSubmit}>
@@ -126,16 +125,16 @@ export default function CreateSecondMe({ onClose }: CreateSecondMeProps) {
                     className="block text-[15px] font-medium text-gray-700 font-sans"
                     htmlFor="name"
                   >
-                    Second Me Name
+                    分身名称
                   </label>
                   <p className="text-sm text-gray-500 mt-1 leading-relaxed font-sans">
-                    This name will represent you, and your Second Me.
+                    这个名字将代表你和你的分身。
                   </p>
                   <input
                     className={`mt-1.5 block w-full px-4 py-2.5 rounded-lg border bg-white shadow-[3px_3px_0px_0px_rgba(0,0,0,0.03)] focus:border-gray-400 focus:ring-2 focus:ring-gray-400/20 transition-all font-sans text-[15px] placeholder:text-gray-400 placeholder:text-[15px] ${nameError ? 'border-red-500' : 'border-gray-800/10'}`}
                     id="name"
                     onChange={handleNameChange}
-                    placeholder="e.g., Felix (no spaces allowed)"
+                    placeholder="例如：Felix（不允许空格）"
                     required
                     type="text"
                     value={name}
@@ -150,14 +149,14 @@ export default function CreateSecondMe({ onClose }: CreateSecondMeProps) {
                     Short Personal Description
                   </label>
                   <p className="text-sm text-gray-500 mt-1 leading-relaxed font-sans">
-                    Briefly describe yourself: personality, motivation, or style.
+                    简要描述你自己：性格、动机或风格。
                   </p>
                   <textarea
                     className="mt-1.5 block w-full px-4 py-2.5 rounded-lg border border-gray-800/10 bg-white shadow-[3px_3px_0px_0px_rgba(0,0,0,0.03)] focus:border-gray-400 focus:ring-2 focus:ring-gray-400/20 transition-all font-sans text-[15px] placeholder:text-gray-400 placeholder:text-[15px] resize-none h-28 leading-relaxed"
                     id="description"
                     maxLength={200}
                     onChange={(e) => setDescription(e.target.value)}
-                    placeholder="e.g., 'An adventurous, data-driven, and enjoy learning new technologies.'"
+                    placeholder="例如：'喜欢冒险、数据驱动，喜欢学习新技术。'"
                     rows={4}
                     value={description}
                   />
@@ -167,17 +166,16 @@ export default function CreateSecondMe({ onClose }: CreateSecondMeProps) {
                     className="block text-[15px] font-medium text-gray-700 font-sans"
                     htmlFor="email"
                   >
-                    Email of Second Me
+                    分身邮箱
                   </label>
                   <p className="text-sm text-gray-500 mt-1 leading-relaxed font-sans">
-                    This email will be used as a contact point for your Second Me. You can use your
-                    own email address.
+                    此邮箱将用作你的分身的联系方式。你可以使用自己的邮箱地址。
                   </p>
                   <input
                     className={`mt-1.5 block w-full px-4 py-2.5 rounded-lg border bg-white shadow-[3px_3px_0px_0px_rgba(0,0,0,0.03)] focus:border-gray-400 focus:ring-2 focus:ring-gray-400/20 transition-all font-sans text-[15px] placeholder:text-gray-400 placeholder:text-[15px] ${emailError ? 'border-red-500' : 'border-gray-800/10'}`}
                     id="email"
                     onChange={handleEmailChange}
-                    placeholder="e.g., your.name@example.com"
+                    placeholder="例如：your.name@example.com"
                     required
                     type="email"
                     value={email}
@@ -191,13 +189,13 @@ export default function CreateSecondMe({ onClose }: CreateSecondMeProps) {
                     onClick={onClose}
                     type="button"
                   >
-                    Cancel
+                    取消
                   </button>
                   <button
                     className="px-8 py-3 bg-gray-900 text-white rounded-lg hover:bg-gray-800 transition-colors font-medium shadow-[3px_3px_0px_0px_rgba(0,0,0,0.1)]"
                     type="submit"
                   >
-                    Create
+                    创建
                   </button>
                 </div>
               </form>

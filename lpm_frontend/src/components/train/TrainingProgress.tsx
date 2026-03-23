@@ -10,11 +10,11 @@ interface TrainingProgressProps {
 }
 
 const descriptionMap = [
-  'At this stage, we obtain the foundational model that will serve as the starting point for your Second Me. This base structure is a blank slate, ready to be shaped and enriched with your personal data, acting as the vessel that will eventually carry your unique presence.',
-  "This step starts by processing and organizing your memories into a structured digital format that forms the groundwork for your Second Me. We break down your life experiences into smaller, meaningful pieces, encode them systematically, and extract essential insights to create a solid base. It's the first move toward building an entity that reflects your past and present.",
-  "Here, we take the fragments of your memories and weave them into a complete, flowing biography that captures your essence. This process connects the dots between your experiences, shaping them into a coherent story that defines who you are. It's like crafting the blueprint of a new being born from your life's journey.",
-  "To enable your Second Me to understand you fully, we create specialized training data tailored to your unique profile. This step lays the groundwork for it to grasp your preferences, identity, and knowledge accurately, ensuring the entity we're constructing can think and respond in ways that feel authentic to you.",
-  'Finally, we train the core model with your specific memories, traits, and preferences, blending them seamlessly into its framework. This step transforms the model into a living representation of you, merging technology with your individuality to create a Second Me that feels real and true to your essence.'
+  '在此阶段，我们获取将作为你的分身起点的基础模型。这个基础结构是一张白纸，准备被塑造并用你的个人数据丰富，作为最终承载你独特存在的载体。',
+  '此步骤首先将你的记忆处理并组织成结构化的数字格式，为你的分身奠定基础。我们将你的生活经历分解成更小的有意义的片段，系统地编码它们，并提取关键见解以创建坚实的基础。这是构建反映你过去和现在的实体的第一步。',
+  '在这里，我们将你记忆的片段编织成一个完整、流畅的传记，捕捉你的本质。这个过程连接你经历之间的点，将它们塑造成一个定义你是谁的连贯故事。这就像制作一个从你生命旅程中诞生的新存在的蓝图。',
+  '为了让你的分身完全理解你，我们创建专门针对你独特配置的训练数据。此步骤为它准确掌握你的偏好、身份和知识奠定基础，确保我们正在构建的实体能够以你觉得真实的方式思考和回应。',
+  '最后，我们用你的特定记忆、特征和偏好训练核心模型，将它们无缝地融入其框架。此步骤将模型转变为你的活生生的代表，将技术与你的个性融合，创建一个感觉真实且符合你本质的分身。'
 ];
 
 const TrainingProgress = (props: TrainingProgressProps) => {
@@ -45,11 +45,11 @@ const TrainingProgress = (props: TrainingProgressProps) => {
     <div className="bg-white rounded-xl shadow-sm border border-gray-100 p-6">
       <div className="flex items-center justify-between mb-4">
         <h3 className="text-lg font-medium text-gray-900">
-          Training Progress (may take long with more data and larger model)
+          训练进度（数据越多、模型越大，耗时越长）
         </h3>
         {status === 'trained' && (
           <span className="px-2.5 py-1 bg-green-50 text-green-700 text-sm font-medium rounded-full">
-            Training Complete
+            训练完成
           </span>
         )}
       </div>
@@ -58,7 +58,7 @@ const TrainingProgress = (props: TrainingProgressProps) => {
         <div className="bg-gray-50 p-4 rounded-lg border border-gray-200">
           <div className="space-y-3">
             <div className="flex justify-between items-center">
-              <span className="text-lg font-semibold text-gray-900">Overall Progress</span>
+              <span className="text-lg font-semibold text-gray-900">总体进度</span>
               <span className="text-2xl font-bold text-blue-600">
                 {Math.round(trainingProgress.overall_progress)}%
               </span>
@@ -74,7 +74,7 @@ const TrainingProgress = (props: TrainingProgressProps) => {
 
         {/* All Training Stages */}
         <div className="space-y-4">
-          <h4 className="text-sm font-medium text-gray-700">Training Stages</h4>
+          <h4 className="text-sm font-medium text-gray-700">训练阶段</h4>
           <div className="space-y-4">
             {trainingStages.map((stage) => {
               const stageStatus = stage.status;

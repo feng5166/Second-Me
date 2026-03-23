@@ -12,7 +12,7 @@ interface IProps {
 
 const options = [
   {
-    label: 'None',
+    label: '无',
     value: ''
   },
   {
@@ -20,7 +20,7 @@ const options = [
     value: 'openai'
   },
   {
-    label: 'Custom',
+    label: '自定义',
     value: 'litellm'
   }
 ];
@@ -54,9 +54,7 @@ const ModelConfigModal = (props: IProps) => {
           src="/images/single_logo.png"
           width={120}
         />
-        <div className="text-gray-500 text-[18px] leading-[32px]">
-          Please Choose OpenAI or Custom
-        </div>
+        <div className="text-gray-500 text-[18px] leading-[32px]">请选择 OpenAI 或自定义</div>
       </div>
     );
   };
@@ -65,25 +63,25 @@ const ModelConfigModal = (props: IProps) => {
     return (
       <div className="flex flex-col w-full gap-4">
         <div className="p-4 border rounded-lg hover:shadow-md transition-shadow">
-          <label className="block text-sm font-medium text-gray-700 mb-1">API Key</label>
+          <label className="block text-sm font-medium text-gray-700 mb-1">API 密钥</label>
           <Input.Password
             onChange={(e) => {
               updateBaseModelConfig({ ...baseModelConfig, key: e.target.value });
             }}
-            placeholder="Enter your OpenAI API key"
+            placeholder="输入你的 OpenAI API 密钥"
             value={baseModelConfig.key}
           />
           <div className="mt-2 text-sm text-gray-500">
-            You can get your API key from{' '}
+            你可以从{' '}
             <a
               className="text-blue-500 hover:underline"
               href="https://platform.openai.com/settings/organization/api-keys"
               rel="noopener noreferrer"
               target="_blank"
             >
-              OpenAI API Keys page
+              OpenAI API 密钥页面
             </a>
-            .
+            获取密钥。
           </div>
         </div>
       </div>
@@ -94,10 +92,10 @@ const ModelConfigModal = (props: IProps) => {
     return (
       <div className="flex flex-col w-full gap-6 p-4">
         <div className="p-4 border rounded-lg hover:shadow-md transition-shadow">
-          <label className="block text-sm font-medium text-gray-700 mb-1">Chat</label>
+          <label className="block text-sm font-medium text-gray-700 mb-1">聊天模型</label>
           <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
             <div className="flex flex-col">
-              <div className="text-sm font-medium text-gray-700 mb-1">Model Name</div>
+              <div className="text-sm font-medium text-gray-700 mb-1">模型名称</div>
               <Input
                 autoCapitalize="off"
                 autoComplete="off"
@@ -113,7 +111,7 @@ const ModelConfigModal = (props: IProps) => {
             </div>
 
             <div className="flex flex-col">
-              <div className="text-sm font-medium text-gray-700 mb-1">API Key</div>
+              <div className="text-sm font-medium text-gray-700 mb-1">API 密钥</div>
               <Input.Password
                 autoCapitalize="off"
                 autoComplete="new-password"
@@ -130,7 +128,7 @@ const ModelConfigModal = (props: IProps) => {
           </div>
 
           <div className="mt-4">
-            <label className="block text-sm font-medium text-gray-700 mb-1">API Endpoint</label>
+            <label className="block text-sm font-medium text-gray-700 mb-1">API 端点</label>
             <Input
               autoComplete="off"
               className="w-full"
@@ -143,10 +141,10 @@ const ModelConfigModal = (props: IProps) => {
         </div>
 
         <div className="p-4 border rounded-lg hover:shadow-md transition-shadow">
-          <label className="block text-sm font-medium text-gray-700 mb-1">Embedding</label>
+          <label className="block text-sm font-medium text-gray-700 mb-1">嵌入模型</label>
           <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
             <div>
-              <label className="block text-sm font-medium text-gray-700 mb-1">Model Name</label>
+              <label className="block text-sm font-medium text-gray-700 mb-1">模型名称</label>
               <Input
                 className="w-full"
                 onChange={(e) => {
@@ -160,7 +158,7 @@ const ModelConfigModal = (props: IProps) => {
             </div>
 
             <div>
-              <label className="block text-sm font-medium text-gray-700 mb-1">API Key</label>
+              <label className="block text-sm font-medium text-gray-700 mb-1">API 密钥</label>
               <Input.Password
                 className="w-full"
                 onChange={(e) => {
@@ -172,7 +170,7 @@ const ModelConfigModal = (props: IProps) => {
           </div>
 
           <div className="mt-4">
-            <label className="block text-sm font-medium text-gray-700 mb-1">API Endpoint</label>
+            <label className="block text-sm font-medium text-gray-700 mb-1">API 端点</label>
             <Input
               className="w-full"
               onChange={(e) => {
@@ -196,7 +194,7 @@ const ModelConfigModal = (props: IProps) => {
         }
       })
       .catch((error) => {
-        console.error(error.message || 'Failed to update model config');
+        console.error(error.message || '更新模型配置失败');
       });
   };
 
@@ -222,9 +220,7 @@ const ModelConfigModal = (props: IProps) => {
       open={open}
       title={
         <div className="flex items-center gap-2">
-          <div className="text-xl font-semibold leading-6 text-gray-900">
-            Support Model Configuration
-          </div>
+          <div className="text-xl font-semibold leading-6 text-gray-900">支持模型配置</div>
           <a
             className="text-gray-500 hover:text-gray-700"
             href="https://secondme.gitbook.io/secondme/guides/create-second-me/support-model-config"
@@ -239,8 +235,7 @@ const ModelConfigModal = (props: IProps) => {
       <div className="flex flex-col items-center">
         <div className="flex flex-col items-center gap-2">
           <p className="mb-1 text-sm text-gray-500">
-            Configure models used for training data synthesis for Second Me, and as external
-            reference models that Second Me can consult during usage.
+            配置用于训练数据合成的模型，以及分身在使用过程中可以咨询的外部参考模型。
           </p>
           <Radio.Group
             buttonStyle="solid"

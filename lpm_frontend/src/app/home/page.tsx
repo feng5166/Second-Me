@@ -53,7 +53,7 @@ export default function Home() {
         }
       })
       .catch((error: any) => {
-        message.error(error.message || 'Failed to load upload count');
+        message.error(error.message || '加载上传数量失败');
       });
   }, []);
 
@@ -106,16 +106,16 @@ export default function Home() {
                 textShadow: '0 2px 4px rgba(0,0,0,0.08)'
               }}
             >
-              Create Your AI self
+              创建你的 AI 分身
             </span>
           </h1>
           <p className="text-2xl md:text-3xl mb-14 mx-auto  px-4 flex flex-wrap justify-center tracking-[0.01em] font-[Calistoga]">
             <span className="inline-block mx-2 bg-gradient-to-br from-[#334155] to-[#475569] bg-clip-text text-transparent">
-              Locally Trained
+              本地训练
             </span>
             <span className="inline-block text-[#64748B] mx-2">·</span>
             <span className="inline-block mx-2 bg-gradient-to-br from-[#334155] to-[#475569] bg-clip-text text-transparent">
-              Globally Connected
+              全球连接
             </span>
           </p>
 
@@ -124,7 +124,7 @@ export default function Home() {
             style={{ transitionDelay: '400ms', color: '#64748B' }}
           >
             <span className="font-medium text-[#334155]">{count}</span>{' '}
-            <span>Second Me in network</span>
+            <span>个分身已加入网络</span>
           </div>
         </div>
 
@@ -134,11 +134,11 @@ export default function Home() {
           >
             {loadInfo ? (
               <button className="btn-primary" onClick={handleExistingUploadClick}>
-                Continue as {loadInfo.name}
+                继续使用 {loadInfo.name}
               </button>
             ) : (
               <button className="btn-primary" onClick={() => setShowCreate(true)}>
-                Create my Second Me
+                创建我的分身
               </button>
             )}
           </div>

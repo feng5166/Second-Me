@@ -10,24 +10,23 @@ interface OnboardingTutorialProps {
 export default function OnboardingTutorial({ onComplete, onClose }: OnboardingTutorialProps) {
   const steps = [
     {
-      title: 'Define Your Identity',
-      description: 'Start by defining your identity - this is the foundation of your Second Me.',
+      title: '定义你的身份',
+      description: '首先定义你的身份 - 这是你的分身的基础。',
       image: '/images/step_1.png'
     },
     {
-      title: 'Upload Your Memories',
-      description: 'Share your experiences by uploading notes, documents, or other content.',
+      title: '上传你的记忆',
+      description: '通过上传笔记、文档或其他内容来分享你的经历。',
       image: '/images/step_2.png'
     },
     {
-      title: 'Train Your Second Me',
-      description: 'Train your AI model, learning your identity, experience and preferences.',
+      title: '训练你的分身',
+      description: '训练你的 AI 模型，学习你的身份、经历和偏好。',
       image: '/images/step_3.png'
     },
     {
-      title: 'Join AI Network',
-      description:
-        'Explore interactions between your Second Me and other AI entities in the network.',
+      title: '加入 AI 网络',
+      description: '探索你的分身与网络中其他 AI 实体之间的交互。',
       image: '/images/step_4.png'
     }
   ];
@@ -55,9 +54,9 @@ export default function OnboardingTutorial({ onComplete, onClose }: OnboardingTu
         </button>
 
         <div className="relative z-10">
-          <h1 className="text-3xl font-bold mb-3 text-gray-900">How to Create Your Second Me</h1>
+          <h1 className="text-3xl font-bold mb-3 text-gray-900">如何创建你的分身</h1>
           <p className="text-lg text-gray-600 max-w-3xl mb-8">
-            Follow these simple steps to build your digital identity foundation.
+            按照这些简单的步骤来构建你的数字身份基础。
           </p>
 
           <div className="grid grid-cols-4 gap-6 mb-10">
@@ -97,7 +96,7 @@ export default function OnboardingTutorial({ onComplete, onClose }: OnboardingTu
               className="px-8 py-3 bg-gray-900 text-white rounded-lg hover:bg-gray-800 transition-colors font-medium flex items-center gap-2 shadow-[3px_3px_0px_0px_rgba(0,0,0,0.1)]"
               onClick={onComplete}
             >
-              Continue
+              继续
               <svg className="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                 <path
                   d="M9 5l7 7-7 7"

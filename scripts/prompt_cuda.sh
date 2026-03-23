@@ -16,7 +16,7 @@ case "$choice" in
     if [ -f .env ]; then
       # Update existing file
       if grep -q "DOCKER_BACKEND_DOCKERFILE" .env; then
-        sed -i 's/^DOCKER_BACKEND_DOCKERFILE=.*/DOCKER_BACKEND_DOCKERFILE=Dockerfile.backend.cuda/' .env
+        sed -i '' 's/^DOCKER_BACKEND_DOCKERFILE=.*/DOCKER_BACKEND_DOCKERFILE=Dockerfile.backend.cuda/' .env
       else
         # Add a newline before appending new content
         echo "" >> .env
@@ -39,7 +39,7 @@ case "$choice" in
     if [ -f .env ]; then
       # Update existing file
       if grep -q "DOCKER_BACKEND_DOCKERFILE" .env; then
-        sed -i 's/^DOCKER_BACKEND_DOCKERFILE=.*/DOCKER_BACKEND_DOCKERFILE=Dockerfile.backend/' .env
+        sed -i '' 's/^DOCKER_BACKEND_DOCKERFILE=.*/DOCKER_BACKEND_DOCKERFILE=Dockerfile.backend/' .env
       else
         # Add a newline before appending new content
         echo "" >> .env

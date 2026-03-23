@@ -3,7 +3,7 @@
 import { usePathname, useRouter } from 'next/navigation';
 import Link from 'next/link';
 import Image from 'next/image';
-import { GithubOutlined, FileTextOutlined } from '@ant-design/icons';
+import { FileTextOutlined } from '@ant-design/icons';
 import { ModelStatus } from '../../../components/ModelStatus';
 import { useLoadInfoStore } from '@/store/useLoadInfoStore';
 import { useEffect } from 'react';
@@ -81,11 +81,11 @@ export function Header() {
             href="https://secondme.io"
             rel="noopener noreferrer"
             target="_blank"
-            title="Learn about Second Me"
+            title="了解 Second Me"
           >
             <div className="flex items-center space-x-1">
               <FileTextOutlined className="text-lg" />
-              <span>Whitepaper</span>
+              <span>白皮书</span>
             </div>
           </Link>
           <Link

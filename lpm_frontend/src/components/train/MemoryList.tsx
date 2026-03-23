@@ -90,22 +90,22 @@ export default function MemoryList({ memories, onDelete }: MemoryListProps) {
           <thead className="bg-gray-100">
             <tr>
               <th className="w-[12%] px-6 py-3 text-left text-xs font-medium text-gray-600 uppercase tracking-wider">
-                Type
+                类型
               </th>
               <th className="w-[25%] px-6 py-3 text-left text-xs font-medium text-gray-600 uppercase tracking-wider">
-                Name
+                名称
               </th>
               <th className="w-[12%] px-6 py-3 text-left text-xs font-medium text-gray-600 uppercase tracking-wider">
-                Size
+                大小
               </th>
               <th className="w-[20%] px-6 py-3 text-left text-xs font-medium text-gray-600 uppercase tracking-wider">
-                Uploaded
+                上传时间
               </th>
               <th className="w-[10%] px-6 py-3 text-left text-xs font-medium text-gray-600 uppercase tracking-wider">
-                Actions
+                操作
               </th>
               <th className="w-[9%] px-6 py-3 text-left text-xs font-medium text-gray-600 uppercase tracking-wider">
-                Details
+                详情
               </th>
             </tr>
           </thead>
@@ -136,7 +136,7 @@ export default function MemoryList({ memories, onDelete }: MemoryListProps) {
                     className="text-red-600 hover:text-red-900 hover:underline focus:outline-none"
                     onClick={() => onDelete(memory.id, memory.name)}
                   >
-                    Delete
+                    删除
                   </button>
                 </td>
                 <td className="px-6 py-4 whitespace-nowrap text-right text-sm font-medium truncate">
@@ -144,7 +144,7 @@ export default function MemoryList({ memories, onDelete }: MemoryListProps) {
                     className="text-blue-600 hover:text-blue-900 hover:underline focus:outline-none"
                     onClick={() => showDetails(memory)}
                   >
-                    Details
+                    详情
                   </button>
                 </td>
               </tr>

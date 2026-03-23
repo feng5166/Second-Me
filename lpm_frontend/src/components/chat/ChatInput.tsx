@@ -40,7 +40,7 @@ export default function ChatInput({ onSendMessage, disabled = false }: ChatInput
             }
           }}
           onKeyDown={handleKeyPress}
-          placeholder="Message Second Me..."
+          placeholder="给分身发消息..."
           rows={1}
           value={message}
         />
@@ -53,7 +53,7 @@ export default function ChatInput({ onSendMessage, disabled = false }: ChatInput
           disabled={!message.trim() || disabled}
           onClick={handleSubmit}
         >
-          Send
+          发送
         </button>
       </div>
     </div>

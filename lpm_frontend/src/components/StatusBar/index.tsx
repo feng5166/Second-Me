@@ -6,10 +6,10 @@ interface StatusBarProps {
 
 export function StatusBar({ status }: StatusBarProps) {
   const steps = [
-    { title: 'Identity', status: 'seed_identity', icon: '🌱' },
-    { title: 'Memory Upload', status: 'memory_upload', icon: '📝' },
-    { title: 'Training', status: 'training', icon: '⚡' },
-    { title: 'Trained', status: 'trained', icon: '✓' }
+    { title: '身份', status: 'seed_identity', icon: '🌱' },
+    { title: '记忆上传', status: 'memory_upload', icon: '📝' },
+    { title: '训练中', status: 'training', icon: '⚡' },
+    { title: '已训练', status: 'trained', icon: '✓' }
   ] as const;
 
   const getStepState = (stepStatus: (typeof steps)[number]['status']) => {

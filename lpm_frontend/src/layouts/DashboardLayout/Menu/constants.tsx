@@ -15,46 +15,46 @@ import ChatBubbleIcon from '@/components/svgs/ChatBubbleIcon';
 
 export const tabs = [
   {
-    name: 'Create Second Me',
+    name: '创建我的分身',
     path: ROUTER_PATH.TRAIN,
     icon: <SettingsIcon className="w-5 h-5" />,
     subTabs: [
       {
-        name: 'Define Your Identity',
+        name: '定义你的身份',
         path: ROUTER_PATH.TRAIN_IDENTITY,
         icon: <UserIcon className="w-4 h-4" />
       },
       {
-        name: 'Upload Your Memory',
+        name: '上传你的记忆',
         path: ROUTER_PATH.TRAIN_MEMORIES,
         icon: <UploadIcon className="w-4 h-4" />
       },
       {
-        name: 'Train Second Me',
+        name: '训练分身',
         path: ROUTER_PATH.TRAIN_TRAINING,
         icon: <TrainingIcon className="w-4 h-4" />
       }
     ]
   },
   {
-    name: 'Playground',
+    name: '对话测试',
     path: ROUTER_PATH.PLAYGROUND,
     icon: <PlaygroundIcon className="w-5 h-5" />,
     subTabs: [
       {
-        name: 'Chat Mode',
+        name: '聊天模式',
         path: ROUTER_PATH.PLAYGROUND_CHAT,
         icon: <ChatIcon className="w-4 h-4" />
       },
       {
-        name: 'Bridge Mode',
+        name: '桥接模式',
         path: ROUTER_PATH.PLAYGROUND_BRIDGE,
         icon: <BridgeIcon className="w-4 h-4" />
       }
     ]
   },
   {
-    name: 'Second Me Services',
+    name: '分身服务',
     path: ROUTER_PATH.APPLICATIONS,
     icon: <AppsIcon className="w-5 h-5" />,
     subTabs: [
@@ -64,22 +64,22 @@ export const tabs = [
         icon: <LightningIcon className="w-4 h-4" />
       },
       {
-        name: 'Roleplay Apps',
+        name: '角色扮演应用',
         path: ROUTER_PATH.APPLICATIONS_ROLEPLAY,
         icon: <RoleplayIcon className="w-4 h-4" />
       },
       {
-        name: 'Network Apps',
+        name: '网络应用',
         path: ROUTER_PATH.APPLICATIONS_NETWORK,
         icon: <NetworkIcon className="w-4 h-4" />
       },
       {
-        name: 'Second X Apps',
+        name: 'Second X 应用',
         path: ROUTER_PATH.APPLICATIONS_SECOND_X,
         icon: <GlobeIcon className="w-4 h-4" />
       },
       {
-        name: 'Integrations',
+        name: '集成',
         path: ROUTER_PATH.APPLICATIONS_INTEGRATIONS,
         icon: <ChatBubbleIcon className="w-4 h-4" />
       }

@@ -9,8 +9,8 @@ import { ROUTER_PATH } from '@/utils/router';
 import { message } from 'antd';
 
 export default function IdentityPage() {
-  const pageTitle = 'Define Your Identity';
-  const pageDescription = "Build your AI's foundation with your basic information.";
+  const pageTitle = '定义你的身份';
+  const pageDescription = '用你的基本信息构建 AI 的基础。';
 
   const router = useRouter();
   const [name, setName] = useState('');
@@ -69,7 +69,7 @@ export default function IdentityPage() {
 
   const validateEmail = (value: string) => {
     if (!value) {
-      setEmailError('Email is required');
+      setEmailError('邮箱不能为空');
 
       return false;
     }
@@ -77,7 +77,7 @@ export default function IdentityPage() {
     const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
 
     if (!emailRegex.test(value)) {
-      setEmailError('Please enter a valid email address');
+      setEmailError('请输入有效的邮箱地址');
 
       return false;
     }
@@ -105,13 +105,13 @@ export default function IdentityPage() {
 
   const handleSave = async () => {
     if (!name.trim()) {
-      message.error('Name cannot be empty');
+      message.error('名称不能为空');
 
       return;
     }
 
     if (name.includes(' ')) {
-      message.error('Name cannot contain spaces');
+      message.error('名称不能包含空格');
 
       return;
     }
@@ -126,7 +126,7 @@ export default function IdentityPage() {
         const res = await updateLoadInfo({ name, description, email });
 
         if (res.data.code === 0) {
-          message.success('Identity updated successfully');
+          message.success('身份更新成功');
           // Update local storage
 
           const updatedData = { ...loadInfo, name, description, email };
@@ -139,7 +139,7 @@ export default function IdentityPage() {
         }
       } catch (error) {
         console.error('Failed to update identity:', error);
-        message.error('Failed to update identity');
+        message.error('更新身份失败');
       } finally {
         setIsEdited(false);
       }
@@ -159,53 +159,46 @@ export default function IdentityPage() {
           <div className="space-y-3">
             {/* Name section */}
             <div>
-              <label className="block text-[14px] font-medium text-gray-700 mb-0.5">
-                Second Me Name
-              </label>
+              <label className="block text-[14px] font-medium text-gray-700 mb-0.5">分身名称</label>
               <p className="text-sm text-gray-500 mb-1 leading-relaxed">
-                This name will represent you, and your Second Me.
+                这个名字将代表你和你的分身。
               </p>
               <input
                 className="w-full px-4 py-2 border border-gray-300 rounded-lg bg-white text-gray-700 focus:border-gray-400 focus:ring-2 focus:ring-gray-400/20 transition-all shadow-[3px_3px_0px_0px_rgba(0,0,0,0.03)]"
                 maxLength={20}
                 onChange={handleNameChange}
-                placeholder="e.g., Felix (no spaces allowed)"
+                placeholder="例如：Felix（不允许空格）"
                 type="text"
                 value={name}
               />
-              <p className="mt-0.5 text-xs text-gray-500">{name.length}/20 characters</p>
+              <p className="mt-0.5 text-xs text-gray-500">{name.length}/20 个字符</p>
             </div>
 
             <div>
-              <label className="block text-[14px] font-medium text-gray-700 mb-0.5">
-                Short Personal Description
-              </label>
+              <label className="block text-[14px] font-medium text-gray-700 mb-0.5">个人简介</label>
               <p className="text-sm text-gray-500 mb-1 leading-relaxed">
-                Briefly describe yourself: personality, motivation, or style.
+                简要描述你自己：性格、动机或风格。
               </p>
               <textarea
                 className="w-full px-4 py-2 border border-gray-300 rounded-lg bg-white text-gray-700 focus:border-gray-400 focus:ring-2 focus:ring-gray-400/20 transition-all shadow-[3px_3px_0px_0px_rgba(0,0,0,0.03)] resize-none leading-relaxed"
                 maxLength={200}
                 onChange={handleDescriptionChange}
-                placeholder="e.g., 'An adventurous, data-driven, and enjoy learning new technologies.'"
+                placeholder="例如：'喜欢冒险、数据驱动，喜欢学习新技术。'"
                 rows={3}
                 value={description}
               />
-              <p className="mt-0.5 text-xs text-gray-500">{description.length}/200 characters</p>
+              <p className="mt-0.5 text-xs text-gray-500">{description.length}/200 个字符</p>
             </div>
 
             <div>
-              <label className="block text-[14px] font-medium text-gray-700 mb-0.5">
-                Email of Second Me
-              </label>
+              <label className="block text-[14px] font-medium text-gray-700 mb-0.5">分身邮箱</label>
               <p className="text-sm text-gray-500 mb-1 leading-relaxed">
-                This email will be used as a contact point for your Second Me. You can use your own
-                email address.
+                此邮箱将用作你的分身的联系方式。你可以使用自己的邮箱地址。
               </p>
               <input
                 className={`w-full px-4 py-2 border ${emailError ? 'border-red-500' : 'border-gray-300'} rounded-lg bg-white text-gray-700 focus:border-gray-400 focus:ring-2 focus:ring-gray-400/20 transition-all shadow-[3px_3px_0px_0px_rgba(0,0,0,0.03)]`}
                 onChange={handleEmailChange}
-                placeholder="e.g., your.name@example.com"
+                placeholder="例如：your.name@example.com"
                 type="email"
                 value={email}
               />
@@ -224,7 +217,7 @@ export default function IdentityPage() {
                   handleSave();
                 }}
               >
-                Save
+                保存
               </button>
             </div>
           </div>
@@ -237,7 +230,7 @@ export default function IdentityPage() {
           className="px-4 py-2 text-sm font-medium rounded-lg bg-blue-500 text-white hover:bg-blue-600 transition-colors flex items-center gap-2"
           onClick={() => router.push(ROUTER_PATH.TRAIN_MEMORIES)}
         >
-          Next: Upload Memories
+          下一步：上传记忆
           <svg className="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
             <path d="M9 5l7 7-7 7" strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} />
           </svg>

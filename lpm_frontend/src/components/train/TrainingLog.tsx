@@ -31,15 +31,17 @@ const TrainingLog: React.FC<TrainingLogProps> = ({ trainingDetails }: TrainingLo
     // Set up scroll event listener to detect user scrolling
     const handleUserScroll = () => {
       if (!consoleEndRef.current) return;
-      
+
       const consoleContainer = consoleEndRef.current.closest('.overflow-y-auto');
-      
+
       if (!(consoleContainer instanceof HTMLElement)) return;
-      
+
       // Check if scrolled away from bottom
-      const isScrolledToBottom = 
-        Math.abs((consoleContainer.scrollHeight - consoleContainer.scrollTop) - consoleContainer.clientHeight) < 50;
-      
+      const isScrolledToBottom =
+        Math.abs(
+          consoleContainer.scrollHeight - consoleContainer.scrollTop - consoleContainer.clientHeight
+        ) < 50;
+
       // If scrolled away from bottom, consider it manual scrolling
       if (!isScrolledToBottom) {
         setIsUserScrolling(true);
@@ -88,6 +90,7 @@ const TrainingLog: React.FC<TrainingLogProps> = ({ trainingDetails }: TrainingLo
     }
   }, [trainingDetails, isAutoScrollEnabled]);
 
+  // eslint-disable-next-line @typescript-eslint/no-unused-vars
   const toggleAutoScroll = () => {
     setIsAutoScrollEnabled(!isAutoScrollEnabled);
     if (!isAutoScrollEnabled) {

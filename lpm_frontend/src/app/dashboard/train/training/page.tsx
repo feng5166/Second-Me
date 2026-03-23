@@ -28,16 +28,9 @@ interface TrainInfo {
 }
 
 const trainInfo: TrainInfo = {
-  name: 'Training Process',
-  description:
-    'Transform your memories into a personalized AI model through a multi-stage training process',
-  features: [
-    'Automated multi-stage training process',
-    'Real-time progress monitoring',
-    'Detailed training logs',
-    'Training completion notification',
-    'Model performance metrics'
-  ]
+  name: '训练流程',
+  description: '通过多阶段训练流程将你的记忆转化为个性化 AI 模型',
+  features: ['自动化多阶段训练流程', '实时进度监控', '详细训练日志', '训练完成通知', '模型性能指标']
 };
 
 const POLLING_INTERVAL = 3000;
@@ -67,9 +60,8 @@ const baseModelOptions = [
 ];
 
 // Title and explanation section
-const pageTitle = 'Training Process';
-const pageDescription =
-  'Transform your memories into a personalized AI model that thinks and communicates like you.';
+const pageTitle = '训练流程';
+const pageDescription = '将你的记忆转化为个性化 AI 模型，让它像你一样思考和交流。';
 
 export default function TrainingPage() {
   const checkTrainStatus = useTrainingStore((state) => state.checkTrainStatus);
@@ -120,12 +112,12 @@ export default function TrainingPage() {
             console.log('CUDA is not available on this system');
           }
         } else {
-          message.error(res.data.message || 'Failed to check CUDA availability');
+          message.error(res.data.message || '检查 CUDA 可用性失败');
         }
       })
       .catch((err) => {
         console.error('CUDA availability check failed', err);
-        message.error('CUDA availability check failed');
+        message.error('CUDA 可用性检查失败');
       });
   }, []);
 
@@ -150,7 +142,7 @@ export default function TrainingPage() {
         console.error('Training status check failed:', error);
         stopPolling(); // Stop polling when error occurs
         setIsTraining(false);
-        message.error('Training status check failed, monitoring stopped');
+        message.error('训练状态检查失败，监控已停止');
       });
   };
 
@@ -343,11 +335,11 @@ export default function TrainingPage() {
         setIsTraining(false);
         setTrainSuspended(true);
       } else {
-        message.error(res.data.message || 'Failed to stop training');
+        message.error(res.data.message || '停止训练失败');
       }
     } catch (error) {
       console.error('Error stopping training:', error);
-      message.error('Failed to stop training');
+      message.error('停止训练失败');
     }
   };
 
@@ -361,7 +353,7 @@ export default function TrainingPage() {
           resetTrainingState();
           localStorage.removeItem('trainingLogs');
         } else {
-          throw new Error(res.data.message || 'Failed to reset progress');
+          throw new Error(res.data.message || '重置进度失败');
         }
       })
       .catch((error) => {
@@ -394,7 +386,7 @@ export default function TrainingPage() {
         scrollPageToBottom();
         startGetTrainingProgress();
       } else {
-        message.error(res.data.message || 'Failed to start training');
+        message.error(res.data.message || '开始训练失败');
         setIsTraining(false);
       }
     } catch (error: unknown) {
@@ -402,9 +394,9 @@ export default function TrainingPage() {
       setIsTraining(false);
 
       if (error instanceof Error) {
-        message.error(error.message || 'Failed to start training');
+        message.error(error.message || '开始训练失败');
       } else {
-        message.error('Failed to start training');
+        message.error('开始训练失败');
       }
     }
   };
@@ -427,7 +419,7 @@ export default function TrainingPage() {
         scrollPageToBottom();
         startGetTrainingProgress();
       } else {
-        message.error(res.data.message || 'Failed to retrain model');
+        message.error(res.data.message || '重新训练模型失败');
         setIsTraining(false);
       }
     } catch (error: unknown) {
@@ -435,9 +427,9 @@ export default function TrainingPage() {
       setIsTraining(false);
 
       if (error instanceof Error) {
-        message.error(error.message || 'Failed to retrain model');
+        message.error(error.message || '重新训练模型失败');
       } else {
-        message.error('Failed to retrain model');
+        message.error('重新训练模型失败');
       }
     }
   };
@@ -445,13 +437,13 @@ export default function TrainingPage() {
   // Call the appropriate handler function based on status
   const handleTrainingAction = async () => {
     if (trainActionLoading) {
-      message.info('Please wait a moment...');
+      message.info('请稍候...');
 
       return;
     }
 
     if (!isTraining && serviceStarted) {
-      message.error('Model is already running, please stop it first');
+      message.error('模型正在运行中，请先停止');
 
       return;
     }
@@ -505,15 +497,15 @@ export default function TrainingPage() {
     <div ref={containerRef} className="h-full overflow-auto">
       {/* Memory count warning modal */}
       <Modal
-        cancelText="Stay Here"
-        okText="Go to Memories Page"
+        cancelText="留在此页"
+        okText="前往记忆页面"
         onCancel={() => setShowMemoryModal(false)}
         onOk={handleMemoryModalConfirm}
         open={showMemoryModal}
-        title="More Memories Needed"
+        title="需要更多记忆"
       >
-        <p>You need to add at least 3 memories before you can train your model.</p>
-        <p>Would you like to go to the memories page to add more?</p>
+        <p>训练模型前需要添加至少 3 条记忆。</p>
+        <p>是否前往记忆页面添加更多？</p>
       </Modal>
 
       <div className="max-w-6xl mx-auto px-6 py-8 space-y-8">
@@ -551,7 +543,7 @@ export default function TrainingPage() {
             <div className="space-y-4">
               <p className="text-gray-600">{trainInfo.description}</p>
               <div>
-                <h4 className="font-medium mb-2">Key Features:</h4>
+                <h4 className="font-medium mb-2">主要功能：</h4>
                 <ul className="list-disc pl-5 space-y-1.5">
                   {trainInfo.features.map((feature, index) => (
                     <li key={index} className="text-gray-600">

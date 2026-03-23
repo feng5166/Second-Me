@@ -331,16 +331,16 @@ export default function PlaygroundChat() {
       {/* Main chat area */}
       <div className="flex-1 flex flex-col bg-white">
         <div className="flex items-center justify-between px-6 py-3 border-b">
-          <h2 className="text-lg font-semibold">Chat with Second Me</h2>
+          <h2 className="text-lg font-semibold">与分身对话</h2>
           <button className="text-sm text-gray-600 hover:text-gray-900" onClick={handleClearChat}>
-            Clear Chat
+            清空对话
           </button>
         </div>
         {/* Chat message area */}
         <div className="flex-1 overflow-y-auto px-6 py-6">
           {messages.length === 0 ? (
             <div className="h-full flex items-center justify-center text-gray-400">
-              Start a new conversation...
+              开始新对话...
             </div>
           ) : (
             <>

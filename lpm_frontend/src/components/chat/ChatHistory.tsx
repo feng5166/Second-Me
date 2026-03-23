@@ -43,7 +43,7 @@ export default function ChatHistory({
               fillRule="evenodd"
             />
           </svg>
-          New Chat
+          新对话
         </button>
       </div>
 
@@ -57,7 +57,7 @@ export default function ChatHistory({
             onClick={() => onSessionClick(session.id)}
           >
             <div className="flex items-center">
-              <div className="text-sm font-medium truncate">{session.title}</div>
+              <div className="text-sm font-medium truncate">{session.title || '新对话'}</div>
               <div className="ml-auto text-gray-400 hover:text-gray-600 transition-colors">
                 <DeleteOutlined onClick={() => onDeleteChat(session.id)} />
               </div>

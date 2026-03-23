@@ -47,7 +47,7 @@ export default function ContextSettings({ settings, onSettingsChange }: ContextS
     <div className="bg-white rounded-lg shadow-sm p-6 space-y-6 h-full">
       <div className="flex items-center justify-between">
         <div className="flex items-center gap-2">
-          <h2 className="text-lg font-semibold mb-0">Chat Settings</h2>
+          <h2 className="text-lg font-semibold mb-0">聊天设置</h2>
           <button
             className="p-1.5 rounded-full hover:bg-gray-100 text-gray-500 hover:text-gray-700 transition-colors"
             onClick={() => {
@@ -94,7 +94,7 @@ export default function ContextSettings({ settings, onSettingsChange }: ContextS
                 if (e.target === modal) modal.remove();
               };
             }}
-            title="Learn about Hybrid Architecture"
+            title="了解混合架构"
           >
             <svg className="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
               <path
@@ -111,8 +111,8 @@ export default function ContextSettings({ settings, onSettingsChange }: ContextS
       <div className="space-y-4">
         <div className="flex items-start justify-between">
           <div className="max-w-[235px]">
-            <label className="font-medium">Memory Retrieval</label>
-            <p className="text-sm text-gray-500">Configure how Second Me accesses your memories</p>
+            <label className="font-medium">记忆检索</label>
+            <p className="text-sm text-gray-500">配置分身如何访问你的记忆</p>
           </div>
           <div className="pt-1">
             <button
@@ -133,8 +133,8 @@ export default function ContextSettings({ settings, onSettingsChange }: ContextS
         {/* Support Model section hidden as requested */}
 
         <div className="space-y-2">
-          <label className="font-medium">System Prompt</label>
-          <p className="text-sm text-gray-500">Configure the base behavior of your SecondMe</p>
+          <label className="font-medium">系统提示词</label>
+          <p className="text-sm text-gray-500">配置分身的基础行为</p>
           <textarea
             className="w-full h-32 px-3 py-2 border rounded-lg resize-none focus:ring-2 focus:ring-blue-500 focus:border-blue-500"
             onChange={(e) =>
@@ -143,7 +143,7 @@ export default function ContextSettings({ settings, onSettingsChange }: ContextS
                 systemPrompt: e.target.value
               })
             }
-            placeholder="Enter system prompt..."
+            placeholder="输入系统提示词..."
             value={settings.systemPrompt}
           />
         </div>
@@ -151,8 +151,8 @@ export default function ContextSettings({ settings, onSettingsChange }: ContextS
         <div className="space-y-2">
           <div className="flex items-center justify-between">
             <div>
-              <label className="font-medium">Temperature</label>
-              <p className="text-sm text-gray-500">Adjust creativity (0 = precise, 1 = creative)</p>
+              <label className="font-medium">温度</label>
+              <p className="text-sm text-gray-500">调整创造性（0 = 精确，1 = 创意）</p>
             </div>
             <div className="flex items-center gap-2">
               <input
@@ -182,7 +182,7 @@ export default function ContextSettings({ settings, onSettingsChange }: ContextS
                   })
                 }
               >
-                Reset
+                重置
               </button>
             </div>
           </div>
@@ -201,8 +201,8 @@ export default function ContextSettings({ settings, onSettingsChange }: ContextS
             value={settings.temperature}
           />
           <div className="flex justify-between text-xs text-gray-500">
-            <span>Precise</span>
-            <span>Creative</span>
+            <span>精确</span>
+            <span>创意</span>
           </div>
         </div>
       </div>

@@ -2,9 +2,7 @@
 
 import { useRouter } from 'next/navigation';
 import Image from 'next/image';
-import { useMemo, useState } from 'react';
-import { Modal } from 'antd';
-import RegisterUploadModal from '@/components/upload/RegisterUploadModal';
+import { useMemo } from 'react';
 import { ROUTER_PATH } from '@/utils/router';
 import { useLoadInfoStore } from '@/store/useLoadInfoStore';
 import { EVENT } from '@/utils/event';

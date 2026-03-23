@@ -21,29 +21,28 @@ interface TrainSectionInfo {
 
 const trainSectionInfo: Record<string, TrainSectionInfo> = {
   upload: {
-    name: 'Upload Memories',
+    name: '上传记忆',
     description:
-      'Share your experiences with your SecondMe so it can learn to think and respond like you. ' +
-      "Each memory you upload becomes part of your AI's lived experience, helping it understand your perspective, values, and communication style. " +
-      'The more personal context you provide, the more authentic your digital twin becomes.',
+      '与你的分身分享你的经历，让它学会像你一样思考和回应。' +
+      '你上传的每一段记忆都会成为 AI 的生活经验，帮助它理解你的观点、价值观和沟通风格。' +
+      '你提供的个人背景越多，你的数字分身就越真实。',
     features: [
-      'Drag-and-drop file upload',
-      'Bulk folder upload support',
-      'Text input for direct content',
-      'File size and type validation',
-      'Upload progress tracking'
+      '拖拽上传文件',
+      '批量文件夹上传',
+      '直接输入文本内容',
+      '文件大小和类型验证',
+      '上传进度跟踪'
     ]
   },
   'memory-list': {
-    name: 'Memory List',
-    description:
-      'View and manage all your uploaded training materials. Organize and review your memories before starting the training process.',
+    name: '记忆列表',
+    description: '查看和管理你上传的所有训练材料。在开始训练之前，整理和审查你的记忆。',
     features: [
-      'List view of all memories',
-      'Memory type identification',
-      'Size and upload time display',
-      'Memory content preview',
-      'Delete and manage memories'
+      '所有记忆的列表视图',
+      '记忆类型识别',
+      '大小和上传时间显示',
+      '记忆内容预览',
+      '删除和管理记忆'
     ]
   }
 };
@@ -60,9 +59,9 @@ export interface Memory {
 
 export default function TrainPage() {
   // Title and explanation section
-  const pageTitle = 'Upload Memories';
+  const pageTitle = '上传记忆';
   const pageDescription =
-    "Upload content that helps your AI understand you better. These aren't just files—they're experiences and ideas for your Second Me to live through. By processing these memories, your AI learns to see the world as you do, adopting your unique perspective and decision-making patterns.";
+    '上传能帮助 AI 更好理解你的内容。这些不仅仅是文件——它们是你的分身要经历的体验和想法。通过处理这些记忆，你的 AI 学会像你一样看待世界，采用你独特的视角和决策模式。';
 
   const router = useRouter();
   const containerRef = useRef<HTMLDivElement>(null);
@@ -150,7 +149,7 @@ export default function TrainPage() {
 
         return updatedMemories;
       });
-      message.success(`Memory "${name}" deleted successfully!`);
+      message.success(`记忆 "${name}" 删除成功！`);
     } else {
       message.error(res.data.message);
     }
@@ -160,7 +159,7 @@ export default function TrainPage() {
     <button
       className="ml-auto p-1.5 rounded-full bg-gray-100 text-gray-500 hover:bg-gray-200 hover:text-gray-700 transition-colors"
       onClick={() => setSelectedInfo(section)}
-      title={`Learn more about ${trainSectionInfo[section].name}`}
+      title={`了解更多关于${trainSectionInfo[section].name}`}
     >
       <svg className="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
         <path
@@ -187,7 +186,7 @@ export default function TrainPage() {
         {/* Upload Memories Section */}
         <div className="bg-white rounded-xl shadow-sm border border-gray-100 p-4 hover:shadow-md transition-shadow">
           <div className="flex items-center gap-2 mb-3">
-            <h2 className="text-lg font-semibold text-gray-900 mb-0">Upload Memories</h2>
+            <h2 className="text-lg font-semibold text-gray-900 mb-0">上传记忆</h2>
             {renderInfoButton('upload')}
           </div>
           <UploadMemories onFileUpload={handleFileUpload} />
@@ -196,7 +195,7 @@ export default function TrainPage() {
         {/* Memory List Section */}
         <div className="bg-white rounded-xl shadow-sm border border-gray-100 p-4 hover:shadow-md transition-shadow">
           <div className="flex justify-between items-center mb-3">
-            <h2 className="text-xl font-semibold tracking-tight text-gray-900">Memory List</h2>
+            <h2 className="text-xl font-semibold tracking-tight text-gray-900">记忆列表</h2>
             {renderInfoButton('memory-list')}
           </div>
           <MemoryList memories={memories} onDelete={handleDeleteMemory} />
@@ -208,7 +207,7 @@ export default function TrainPage() {
             className="px-4 py-2 text-sm font-medium rounded-lg bg-blue-500 text-white hover:bg-blue-600 transition-colors flex items-center gap-2"
             onClick={() => router.push(ROUTER_PATH.TRAIN_TRAINING)}
           >
-            Next: Training
+            下一步：训练
             <svg className="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
               <path d="M9 5l7 7-7 7" strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} />
             </svg>
@@ -222,7 +221,7 @@ export default function TrainPage() {
             <div className="space-y-4">
               <p className="text-gray-600">{trainSectionInfo[selectedInfo].description}</p>
               <div>
-                <h4 className="font-medium mb-2">Key Features:</h4>
+                <h4 className="font-medium mb-2">主要功能：</h4>
                 <ul className="list-disc pl-5 space-y-1.5">
                   {trainSectionInfo[selectedInfo].features.map((feature, index) => (
                     <li key={index} className="text-gray-600">

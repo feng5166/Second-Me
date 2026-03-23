@@ -124,7 +124,7 @@ export default function UploadMemories({ onFileUpload }: UploadMemoriesProps) {
 
   const showSuccessMessage = () => {
     message.success({
-      content: 'Successfully added text content',
+      content: '成功添加文本内容',
       icon: <CheckCircleFilled style={{ color: '#52c41a' }} />,
       className: 'custom-message-success'
     });
@@ -138,7 +138,7 @@ export default function UploadMemories({ onFileUpload }: UploadMemoriesProps) {
       ?.toLowerCase();
 
     if (!extension || !['pdf', 'txt', 'md'].includes(extension)) {
-      message.info('Only .pdf, .txt and .md files are supported');
+      message.info('仅支持 .pdf、.txt 和 .md 文件');
 
       return false;
     }
@@ -185,7 +185,7 @@ export default function UploadMemories({ onFileUpload }: UploadMemoriesProps) {
 
       return true;
     } catch (error: any) {
-      message.error(`${fileName} upload failed: ${error.message}`);
+      message.error(`${fileName} 上传失败: ${error.message}`);
 
       return false;
     }
@@ -213,7 +213,7 @@ export default function UploadMemories({ onFileUpload }: UploadMemoriesProps) {
         showSuccessMessage();
         setText('');
       } catch (error: any) {
-        message.error(`Upload failed: ${error.message}`);
+        message.error(`上传失败: ${error.message}`);
       }
     }
   };
@@ -228,7 +228,7 @@ export default function UploadMemories({ onFileUpload }: UploadMemoriesProps) {
         const fileToUpload = file instanceof File ? file : (file as any).originFileObj;
 
         if (!fileToUpload) {
-          message.error('Unable to get file content');
+          message.error('无法获取文件内容');
 
           return;
         }
@@ -237,7 +237,7 @@ export default function UploadMemories({ onFileUpload }: UploadMemoriesProps) {
         const extension = fileToUpload.name.split('.').pop()?.toLowerCase();
 
         if (!extension || !['pdf', 'txt', 'md'].includes(extension)) {
-          message.info('Only .pdf, .txt and .md files are supported');
+          message.info('仅支持 .pdf、.txt 和 .md 文件');
 
           return;
         }
@@ -248,18 +248,18 @@ export default function UploadMemories({ onFileUpload }: UploadMemoriesProps) {
           onSuccess?.(file);
           dispatchEvent(new Event(EVENT.REFRESH_MEMORIES));
         } else {
-          onError?.(new Error('Upload failed'));
+          onError?.(new Error('上传失败'));
         }
       } catch (error: any) {
-        message.error(error.message || 'Upload failed');
-        onError?.(new Error('Upload failed'));
+        message.error(error.message || '上传失败');
+        onError?.(new Error('上传失败'));
       }
     },
     onChange: (info) => {
       if (info.file.status === 'done') {
         // showSuccessMessage();
       } else if (info.file.status === 'error') {
-        message.error(`${info.file.name} upload failed`);
+        message.error(`${info.file.name} 上传失败`);
       }
     }
   };
@@ -273,7 +273,7 @@ export default function UploadMemories({ onFileUpload }: UploadMemoriesProps) {
         const fileToUpload = file instanceof File ? file : (file as any).originFileObj;
 
         if (!fileToUpload) {
-          message.error('Unable to get file content');
+          message.error('无法获取文件内容');
 
           return;
         }
@@ -295,7 +295,7 @@ export default function UploadMemories({ onFileUpload }: UploadMemoriesProps) {
           dispatchEvent(new Event(EVENT.REFRESH_MEMORIES));
         }
       } catch (error: any) {
-        message.error(error.message || 'Upload failed');
+        message.error(error.message || '上传失败');
       }
     },
     onChange: (_info) => {
@@ -310,13 +310,13 @@ export default function UploadMemories({ onFileUpload }: UploadMemoriesProps) {
   };
 
   const uploadTypes = [
-    { key: 'text', icon: <FileOutlined className="icon" />, text: 'Text', disabled: false },
-    { key: 'file', icon: <InboxOutlined className="icon" />, text: 'File', disabled: false },
-    { key: 'folder', icon: <FolderOutlined className="icon" />, text: 'Folder', disabled: false },
+    { key: 'text', icon: <FileOutlined className="icon" />, text: '文本', disabled: false },
+    { key: 'file', icon: <InboxOutlined className="icon" />, text: '文件', disabled: false },
+    { key: 'folder', icon: <FolderOutlined className="icon" />, text: '文件夹', disabled: false },
     {
       key: 'software',
       icon: <DesktopOutlined className="icon" />,
-      text: 'Software Integration',
+      text: '软件集成',
       disabled: true
     },
     {
@@ -333,7 +333,7 @@ export default function UploadMemories({ onFileUpload }: UploadMemoriesProps) {
           <path d="M6 10c-2.21 0-4 1.79-4 4s1.79 4 4 4 4-1.79 4-4-1.79-4-4-4zm0 6c-1.1 0-2-.9-2-2s.9-2 2-2 2 .9 2 2-.9 2-2 2zm12-6c-2.21 0-4 1.79-4 4s1.79 4 4 4 4-1.79 4-4-1.79-4-4-4zm0 6c-1.1 0-2-.9-2-2s.9-2 2-2 2 .9 2 2-.9 2-2 2zm-6-5.99h-2v2h2v-2z" />
         </svg>
       ),
-      text: 'Wearable Integration',
+      text: '可穿戴设备集成',
       disabled: true
     }
   ];
@@ -347,7 +347,7 @@ export default function UploadMemories({ onFileUpload }: UploadMemoriesProps) {
               <TextArea
                 className="hover:border-[#4080FF] focus:border-[#4080FF] focus:shadow-[0_0_0_2px_rgba(64,128,255,0.2),inset_0_2px_4px_rgba(0,0,0,0.03)] flex-1"
                 onChange={(e) => setText(e.target.value)}
-                placeholder="Enter your text here..."
+                placeholder="在此输入文本..."
                 style={{
                   resize: 'none',
                   minHeight: '180px',
@@ -363,7 +363,7 @@ export default function UploadMemories({ onFileUpload }: UploadMemoriesProps) {
                 value={text}
               />
               <SaveButton onClick={handleTextSubmit} size="large" type="primary">
-                Save Text
+                保存文本
               </SaveButton>
             </TextContainer>
           </TabContent>
@@ -377,9 +377,9 @@ export default function UploadMemories({ onFileUpload }: UploadMemoriesProps) {
                   <InboxOutlined style={{ filter: 'drop-shadow(0 2px 3px rgba(0,0,0,0.1))' }} />
                 </div>
                 <div className="upload-text">
-                  Drag and drop file, or <span className="browse-link">Browse</span>
+                  拖放文件，或 <span className="browse-link">浏览</span>
                 </div>
-                <div className="file-types">Supports PDF, TXT, MARKDOWN, Max 15MB each.</div>
+                <div className="file-types">支持 PDF、TXT、MARKDOWN，每个最大 15MB。</div>
               </UploadArea>
             </Upload>
           </TabContent>
@@ -393,9 +393,9 @@ export default function UploadMemories({ onFileUpload }: UploadMemoriesProps) {
                   <FolderOutlined style={{ filter: 'drop-shadow(0 2px 3px rgba(0,0,0,0.1))' }} />
                 </div>
                 <div className="upload-text">
-                  Drag and drop folder, or <span className="browse-link">Browse</span>
+                  拖放文件夹，或 <span className="browse-link">浏览</span>
                 </div>
-                <div className="file-types">Supports TXT, MARKDOWN, PDF. Max 15MB each.</div>
+                <div className="file-types">支持 TXT、MARKDOWN、PDF，每个最大 15MB。</div>
               </UploadArea>
             </Upload>
           </TabContent>
@@ -405,7 +405,7 @@ export default function UploadMemories({ onFileUpload }: UploadMemoriesProps) {
         return (
           <TabContent>
             <div style={{ textAlign: 'center', color: '#86909C' }}>
-              {activeTab.charAt(0).toUpperCase() + activeTab.slice(1)} upload coming soon
+              {activeTab === 'software' ? '软件' : '可穿戴设备'}上传即将推出
             </div>
           </TabContent>
         );
@@ -418,7 +418,7 @@ export default function UploadMemories({ onFileUpload }: UploadMemoriesProps) {
     <>
       <GlobalStyle />
       <div className="p-1">
-        <div className="mb-2 text-[15px] font-medium text-gray-700">Upload Method</div>
+        <div className="mb-2 text-[15px] font-medium text-gray-700">上传方式</div>
         <UploadTypeContainer>
           {uploadTypes.map((type) => (
             <UploadTypeBox

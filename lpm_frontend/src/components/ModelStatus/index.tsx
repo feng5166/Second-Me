@@ -46,7 +46,7 @@ export function ModelStatus() {
   const handleRegistryClick = () => {
     if (!serviceStarted) {
       messageApi.info({
-        content: 'Please start your model service first',
+        content: '请先启动模型服务',
         duration: 1
       });
     } else {
@@ -136,7 +136,7 @@ export function ModelStatus() {
     const config = JSON.parse(localStorage.getItem('trainingParams') || '{}');
 
     if (!config.model_name) {
-      message.error('Please train a base model first');
+      message.error('请先训练一个基础模型');
 
       return;
     }
@@ -145,7 +145,7 @@ export function ModelStatus() {
     startService({ model_name: config.model_name })
       .then((res) => {
         if (res.data.code === 0) {
-          messageApi.success({ content: 'Service starting...', duration: 1 });
+          messageApi.success({ content: '服务启动中...', duration: 1 });
           startPolling();
         } else {
           setServiceStarting(false);
@@ -167,7 +167,7 @@ export function ModelStatus() {
     stopService()
       .then((res) => {
         if (res.data.code === 0) {
-          messageApi.success({ content: 'Service stopping...', duration: 1 });
+          messageApi.success({ content: '服务停止中...', duration: 1 });
           startStopPolling();
         } else {
           messageApi.error({ content: res.data.message!, duration: 1 });
@@ -220,19 +220,19 @@ export function ModelStatus() {
             {isServiceStarting || isServiceStopping ? (
               <>
                 <LoadingOutlined className="text-lg" spin />
-                <span>{isServiceStarting ? 'Starting...' : 'Stopping...'}</span>
+                <span>{isServiceStarting ? '启动中...' : '停止中...'}</span>
               </>
             ) : serviceStarted ? (
               <>
                 <StatusDot active={true} />
                 <PauseCircleOutlined className="text-lg" />
-                <span>Stop Service</span>
+                <span>停止服务</span>
               </>
             ) : (
               <>
                 <StatusDot active={false} />
                 <PlayCircleOutlined className="text-lg" />
-                <span>Start Service</span>
+                <span>启动服务</span>
               </>
             )}
           </div>
@@ -247,13 +247,13 @@ export function ModelStatus() {
               <>
                 <StatusDot active={true} />
                 <CheckCircleOutlined className="text-lg" />
-                <span>Join AI Network</span>
+                <span>加入 AI 网络</span>
               </>
             ) : (
               <>
                 <StatusDot active={false} />
                 <CloudUploadOutlined className="text-lg" />
-                <span>Join AI Network</span>
+                <span>加入 AI 网络</span>
               </>
             )}
           </div>

@@ -42,9 +42,9 @@ interface TrainingConfigurationProps {
 }
 
 const synthesisModeOptions = [
-  { value: 'low', label: 'Low' },
-  { value: 'medium', label: 'Medium' },
-  { value: 'high', label: 'High' }
+  { value: 'low', label: '低' },
+  { value: 'medium', label: '中' },
+  { value: 'high', label: '高' }
 ];
 
 const TrainingConfiguration: React.FC<TrainingConfigurationProps> = ({
@@ -79,12 +79,12 @@ const TrainingConfiguration: React.FC<TrainingConfigurationProps> = ({
 
   const trainButtonText = useMemo(() => {
     return isTraining
-      ? 'Stop Training'
+      ? '停止训练'
       : status === 'trained'
-        ? 'Retrain'
+        ? '重新训练'
         : trainSuspended
-          ? 'Resume Training'
-          : 'Start Training';
+          ? '继续训练'
+          : '开始训练';
   }, [isTraining, status, trainSuspended]);
 
   const trainButtonIcon = useMemo(() => {
@@ -102,13 +102,11 @@ const TrainingConfiguration: React.FC<TrainingConfigurationProps> = ({
   return (
     <div className="bg-white rounded-xl shadow-sm border border-gray-100 p-6 hover:shadow-md transition-shadow">
       <div className="flex justify-between items-center mb-4">
-        <h2 className="text-xl font-semibold tracking-tight text-gray-900">
-          Training Configuration
-        </h2>
+        <h2 className="text-xl font-semibold tracking-tight text-gray-900">训练配置</h2>
         <button
           className="p-1.5 rounded-full bg-gray-100 text-gray-500 hover:bg-gray-200 hover:text-gray-700 transition-colors"
           onClick={() => setSelectedInfo(true)}
-          title="Learn more about training process"
+          title="了解更多关于训练流程"
         >
           <svg className="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
             <path
@@ -121,20 +119,20 @@ const TrainingConfiguration: React.FC<TrainingConfigurationProps> = ({
         </button>
       </div>
       <p className="text-gray-600 mb-6 leading-relaxed">
-        {`Configure how your Second Me will be trained using your memory data and identity. Then click 'Start Training'.`}
+        {`配置如何使用你的记忆数据和身份来训练你的分身。然后点击"开始训练"。`}
       </p>
 
       <div className="space-y-6">
         <div className="flex flex-col gap-10">
           <div className="flex flex-col gap-2">
             <h4 className="text-base font-semibold text-gray-800 flex items-center">
-              Step 1: Choose Support Model for Data Synthesis
+              第一步：选择数据合成支持模型
             </h4>
             {!modelConfig?.provider_type ? (
               <div className="flex items-center justify-between">
                 <div className="flex items-center">
                   <label className="block text-sm font-medium text-red-500 mb-1">
-                    None Support Model for Data Synthesis
+                    未配置数据合成支持模型
                   </label>
                   <button
                     className="ml-2 px-3 py-1 bg-blue-500 text-white text-xs rounded hover:bg-blue-600 transition-colors cursor-pointer relative z-10"
@@ -144,7 +142,7 @@ const TrainingConfiguration: React.FC<TrainingConfigurationProps> = ({
                       window.dispatchEvent(new CustomEvent(EVENT.SHOW_MODEL_CONFIG_MODAL));
                     }}
                   >
-                    Configure Support Model
+                    配置支持模型
                   </button>
                 </div>
                 <span className="text-xs text-gray-500">
@@ -154,14 +152,14 @@ const TrainingConfiguration: React.FC<TrainingConfigurationProps> = ({
             ) : (
               <div className="flex items-center relative w-full rounded-lg bg-white py-2 text-left">
                 <div className="flex items-center">
-                  <span className="text-sm font-medium text-gray-700">Model Used : &nbsp;</span>
+                  <span className="text-sm font-medium text-gray-700">使用的模型：&nbsp;</span>
                   {modelConfig.provider_type === 'openai' ? (
                     <OpenAiModelIcon className="h-5 w-5 mr-2 text-green-600" />
                   ) : (
                     <CustomModelIcon className="h-5 w-5 mr-2 text-blue-600" />
                   )}
                   <span className="font-medium">
-                    {modelConfig.provider_type === 'openai' ? 'OpenAI' : 'Custom Model'}
+                    {modelConfig.provider_type === 'openai' ? 'OpenAI' : '自定义模型'}
                   </span>
                   <button
                     className={classNames(
@@ -173,7 +171,7 @@ const TrainingConfiguration: React.FC<TrainingConfigurationProps> = ({
                       e.stopPropagation();
 
                       if (disabledChangeParams) {
-                        message.warning('Cancel the current train in order to configure the model');
+                        message.warning('取消当前训练以配置模型');
 
                         return;
                       }
@@ -181,16 +179,16 @@ const TrainingConfiguration: React.FC<TrainingConfigurationProps> = ({
                       window.dispatchEvent(new CustomEvent(EVENT.SHOW_MODEL_CONFIG_MODAL));
                     }}
                   >
-                    Configure Model for Data Synthesis
+                    配置数据合成模型
                   </button>
                 </div>
                 <span className="ml-auto text-xs text-gray-500">
-                  Model used for processing and synthesizing your memory data
+                  用于处理和合成你的记忆数据的模型
                 </span>
               </div>
             )}
             <div className="flex flex-col gap-3">
-              <div className="font-medium">Data Synthesis Mode</div>
+              <div className="font-medium">数据合成模式</div>
               <Radio.Group
                 disabled={disabledChangeParams}
                 onChange={(e) =>
@@ -205,8 +203,7 @@ const TrainingConfiguration: React.FC<TrainingConfigurationProps> = ({
               />
 
               <span className="text-xs text-gray-500">
-                Low: Fast data synthesis. Medium: Balanced synthesis and speed. High: Rich
-                synthesis, slower speed.
+                低：快速数据合成。中：平衡合成质量和速度。高：丰富合成，速度较慢。
               </span>
             </div>
           </div>
@@ -214,11 +211,10 @@ const TrainingConfiguration: React.FC<TrainingConfigurationProps> = ({
           <div className="flex flex-col gap-2">
             <div className="flex items-center justify-between">
               <h4 className="text-base font-semibold text-gray-800 mb-1">
-                Step 2: Choose Base Model for Training Second Me
+                第二步：选择训练分身的基础模型
               </h4>
               <span className="text-xs text-gray-500">
-                Base model for training your Second Me. Choose based on your available system
-                resources.
+                用于训练分身的基础模型。根据你的可用系统资源选择。
               </span>
             </div>
             <Listbox
@@ -235,7 +231,7 @@ const TrainingConfiguration: React.FC<TrainingConfigurationProps> = ({
                 >
                   <span className="block truncate">
                     {baseModelOptions.find((option) => option.value === trainingParams.model_name)
-                      ?.label || 'Select a model...'}
+                      ?.label || '选择模型...'}
                   </span>
                   <span className="pointer-events-none absolute inset-y-0 right-0 flex items-center pr-2">
                     <ColumnArrowIcon className="h-5 w-5 text-gray-400" />
@@ -281,18 +277,17 @@ const TrainingConfiguration: React.FC<TrainingConfigurationProps> = ({
           <div className="flex flex-col gap-2">
             <div className="flex justify-between items-center">
               <h4 className="text-base font-semibold text-gray-800 mb-1">
-                Step 3: Configure Advanced Training Parameters
+                第三步：配置高级训练参数
               </h4>
               <div className="text-xs text-gray-500">
-                Adjust these parameters to control training quality and performance. Recommended
-                settings will ensure stable training.
+                调整这些参数以控制训练质量和性能。推荐设置将确保训练稳定。
               </div>
             </div>
             <div className="flex flex-col gap-3">
               <div className="flex flex-col gap-2">
                 <div className="flex gap-3 items-center">
-                  <div className="font-medium">Learning Rate</div>
-                  <Tooltip title="Lower values provide stable but slower learning, while higher values accelerate learning but risk overshooting optimal parameters, potentially causing training instability.">
+                  <div className="font-medium">学习率</div>
+                  <Tooltip title="较低的值提供稳定但较慢的学习，较高的值加速学习但有超调最优参数的风险，可能导致训练不稳定。">
                     <QuestionCircleOutlined className="cursor-pointer" />
                   </Tooltip>
                 </div>
@@ -317,13 +312,13 @@ const TrainingConfiguration: React.FC<TrainingConfigurationProps> = ({
                   value={trainingParams.learning_rate}
                 />
                 <div className="text-xs text-gray-500">
-                  Enter a value between 0.00003 and 0.005 (recommended: 0.0001)
+                  输入 0.00003 到 0.005 之间的值（推荐：0.0001）
                 </div>
               </div>
               <div className="flex flex-col gap-2">
                 <div className="flex gap-3 items-center">
-                  <div className="font-medium">Number of Epochs</div>
-                  <Tooltip title="Controls how many complete passes the model makes through your entire dataset during training. More epochs allow deeper pattern recognition and memory integration but significantly increase training time and computational resources required.">
+                  <div className="font-medium">训练轮数</div>
+                  <Tooltip title="控制模型在训练期间对整个数据集进行多少次完整遍历。更多轮数可以更深入地识别模式和整合记忆，但会显著增加训练时间和所需的计算资源。">
                     <QuestionCircleOutlined className="cursor-pointer" />
                   </Tooltip>
                 </div>
@@ -347,14 +342,12 @@ const TrainingConfiguration: React.FC<TrainingConfigurationProps> = ({
                   step={1}
                   value={trainingParams.number_of_epochs}
                 />
-                <div className="text-xs text-gray-500">
-                  Enter an integer between 1 and 10 (recommended: 2)
-                </div>
+                <div className="text-xs text-gray-500">输入 1 到 10 之间的整数（推荐：2）</div>
               </div>
               <div className="flex flex-col gap-2">
                 <div className="flex gap-3 items-center">
-                  <div className="font-medium">Concurrency Threads</div>
-                  <Tooltip title="Defines the number of parallel processing streams used during data synthesis. Higher values can reduce overall training time but increase system resource consumption and may trigger API rate limits, potentially causing training failures.">
+                  <div className="font-medium">并发线程数</div>
+                  <Tooltip title="定义数据合成期间使用的并行处理流数量。较高的值可以减少总体训练时间，但会增加系统资源消耗，可能触发 API 速率限制，从而导致训练失败。">
                     <QuestionCircleOutlined className="cursor-pointer" />
                   </Tooltip>
                 </div>
@@ -379,15 +372,13 @@ const TrainingConfiguration: React.FC<TrainingConfigurationProps> = ({
                   step={1}
                   value={trainingParams.concurrency_threads}
                 />
-                <div className="text-xs text-gray-500">
-                  Enter an integer between 1 and 10 (recommended: 2)
-                </div>
+                <div className="text-xs text-gray-500">输入 1 到 10 之间的整数（推荐：2）</div>
               </div>
 
               <div className="flex flex-col gap-2 mt-4">
                 <div className="flex gap-3 items-center">
-                  <div className="font-medium">Enable CUDA GPU Acceleration</div>
-                  <Tooltip title="When enabled, training will use CUDA GPU acceleration if available on your system. This can significantly speed up training but requires compatible NVIDIA hardware and drivers.">
+                  <div className="font-medium">启用 CUDA GPU 加速</div>
+                  <Tooltip title="启用后，如果系统支持，训练将使用 CUDA GPU 加速。这可以显著加快训练速度，但需要兼容的 NVIDIA 硬件和驱动程序。">
                     <QuestionCircleOutlined className="cursor-pointer" />
                   </Tooltip>
                 </div>
@@ -408,14 +399,14 @@ const TrainingConfiguration: React.FC<TrainingConfigurationProps> = ({
                     <span
                       className={`ms-3 text-sm font-medium ${!cudaAvailable ? 'text-gray-500' : 'text-gray-700'}`}
                     >
-                      {trainingParams.use_cuda ? 'Enabled' : 'Disabled'}
+                      {trainingParams.use_cuda ? '已启用' : '已禁用'}
                     </span>
                   </label>
                 </div>
                 <div className="text-xs text-gray-500">
                   {cudaAvailable
-                    ? 'Enable for faster training on NVIDIA GPUs.'
-                    : 'CUDA acceleration is not available on this system.'}
+                    ? '启用后可在 NVIDIA GPU 上加速训练。'
+                    : '此系统不支持 CUDA 加速。'}
                 </div>
               </div>
             </div>
@@ -423,7 +414,7 @@ const TrainingConfiguration: React.FC<TrainingConfigurationProps> = ({
 
           <div className="flex flex-col gap-3">
             <div className="text-base font-semibold text-gray-800 flex items-center">
-              Step 4: Configure Advanced Behavior
+              第四步：配置高级行为
             </div>
 
             <div className="flex mr-auto gap-2 items-center ">
@@ -460,7 +451,7 @@ const TrainingConfiguration: React.FC<TrainingConfigurationProps> = ({
                   setOpenThinkingModel(true);
                 }}
               >
-                Thinking Model
+                思考模型
               </div>
             </div>
           </div>
@@ -470,17 +461,17 @@ const TrainingConfiguration: React.FC<TrainingConfigurationProps> = ({
           {isTraining && (
             <div className="flex items-center text-amber-600 bg-amber-50 px-3 py-2 rounded-md border border-amber-200">
               <StopIcon className="h-5 w-5 mr-2" />
-              <span className="font-medium">Full stop only when the current step is complete</span>
+              <span className="font-medium">当前步骤完成后才能完全停止</span>
             </div>
           )}
 
-          {trainButtonText === 'Resume Training' && (
+          {trainButtonText === '继续训练' && (
             <button
               className={`inline-flex items-center justify-center px-4 py-2 bg-red-600 hover:bg-red-700 border border-transparent text-sm font-medium rounded-md shadow-sm text-white focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-blue-500`}
               onClick={() => handleResetProgress()}
             >
               <StopIcon className="h-5 w-5 mr-2" />
-              Reset Training
+              重置训练
             </button>
           )}
           <button
