@@ -19,36 +19,36 @@ const applications: ApplicationCard[] = [
   {
     title: 'API & MCP',
     description:
-      'APIs and MCPs allow you to build custom Second Me apps and extend its functionality.',
+      'API 和 MCP 允许你构建自定义分身应用并扩展其功能。',
     image: '/images/app_api_mcp.png',
     route: ROUTER_PATH.APPLICATIONS_API_MCP
   },
   {
-    title: 'Roleplay Apps',
+    title: '角色扮演应用',
     description:
-      'Give your Second Me different personas to express themselves naturally in various scenarios.',
+      '赋予你的分身不同的角色，让它在各种场景中自然地表达自己。',
     image: '/images/app_secondme_apps.png',
     route: ROUTER_PATH.APPLICATIONS_ROLEPLAY
   },
   {
-    title: 'Network Apps',
+    title: '网络应用',
     description:
-      'Create spaces where multiple Second Mes work together to complete shared missions.',
+      '创建多个分身协同工作的空间，共同完成任务。',
     image: '/images/app_secondme_network.png',
     route: ROUTER_PATH.APPLICATIONS_NETWORK
   },
   {
-    title: 'Second X Apps',
+    title: 'Second X 应用',
     description:
-      'Future services natively-built for Second Me to use: Second Tinder, Second Linkedin, etc.',
+      '为分身原生构建的未来服务：Second Tinder、Second LinkedIn 等。',
 
     // description: 'Envision a world where software services are built to serve your digital self. "Second X" is our vision for next-gen apps that support Second Me agents directly. Stay tuned—this feature is not yet available.',
     image: '/images/app_native_applications.png',
     route: ROUTER_PATH.APPLICATIONS_SECOND_X
   },
   {
-    title: 'Integrations',
-    description: 'Integrate Second Me with other services to extend its functionality.',
+    title: '集成',
+    description: '将分身与其他服务集成以扩展其功能。',
     image: '/images/step_2.png',
     route: ROUTER_PATH.APPLICATIONS_INTEGRATIONS
   }
@@ -66,11 +66,10 @@ export default function ApplicationsPage() {
       <div className="max-w-6xl w-full mx-auto">
         <div className="mb-14">
           <h1 className="text-3xl font-bold text-gray-900 mb-3">
-            Second Me is the Foundation to Build Your Identity Apps
+            分身是构建你的身份应用的基础
           </h1>
           <p className="text-lg text-gray-600 max-w-3xl">
-            Beyond basic chat, you create specialized roles, personalized tasks, collaborate in
-            multi-AI spaces, or explore the future with Second X.
+            除了基本对话，你还可以创建专门的角色、个性化任务、在多 AI 空间中协作，或探索 Second X 的未来。
           </p>
         </div>
         <div className="grid grid-cols-2 md:grid-cols-3 gap-6 pb-4">
