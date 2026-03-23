@@ -170,6 +170,17 @@ second-me/
 # 启动服务
 make start
 
+# 启动 llama 推理服务（命令行方式）
+curl -X POST http://localhost:8002/api/kernel2/llama/start \
+  -H "Content-Type: application/json" \
+  -d '{"model_name": "Qwen2.5-0.5B-Instruct"}'
+
+# 检查 llama 服务状态
+curl http://localhost:8002/api/kernel2/llama/status
+
+# 停止 llama 服务
+curl -X POST http://localhost:8002/api/kernel2/llama/stop
+
 # 停止服务
 # Ctrl+C 或关闭终端
 
